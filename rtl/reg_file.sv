@@ -23,7 +23,7 @@ always_ff @( posedge clk_i ) begin
   end
 end
 
-assign rs1_data_o = rs1_addr_i == 'b0 ? DATA_WIDTH'b0 : reg_array[rs1_addr_i];
-assign rs2_data_o = rs2_addr_i == 'b0 ? DATA_WIDTH'b0 : reg_array[rs2_addr_i];
+assign rs1_data_o = ( rs1_addr_i == 'b0 ) ? ( DATA_WIDTH'b0 ) : ( reg_array[rs1_addr_i] );
+assign rs2_data_o = ( rs2_addr_i == 'b0 ) ? ( DATA_WIDTH'b0 ) : ( reg_array[rs2_addr_i] );
 
 endmodule
