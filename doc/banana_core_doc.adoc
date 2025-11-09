@@ -1,0 +1,53 @@
+= Banana Core Specification
+:doctype: book
+:toc:
+:toclevels: 3
+:sectnums:
+
+== Overview
+
+TBD
+
+=== Features
+
+TBD
+
+=== Suported Extensions
+
+TBD
+
+== Microarchitecture
+
+TBD
+
+=== Top level
+
+TBD
+
+image::img/bc_uarch_top_level.png[Top Level Microarchitecture]
+
+=== Compute Unit
+
+TBD
+
+// include::compite_unit.adoc[leveloffset=+1]
+
+=== TBD more units
+
+TBD
+
+== Intefaces
+
+TBD
+
+=== Internal interfaces
+
+TBD
+
+=== External interfaces
+
+TBD
+
+== Control and Status Registers
+
+TBD
