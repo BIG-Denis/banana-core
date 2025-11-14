@@ -37,8 +37,6 @@ No pipeline registers at BC1 and BC4 (after data memory) presented as instructio
 
 TBD
 
-// include::compite_unit.adoc[leveloffset=+1]
-
 === TBD more units
 
 TBD
