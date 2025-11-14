@@ -8,5 +8,6 @@ int unsigned RF_ADDR_WIDTH = $clog2(RF_REGS_COUNT);
 
 int unsigned INSTR_MEM_SIZE       = 1024;  // count of INSTR_WIDTH bits instructions
 int unsigned INSTR_MEM_ADDR_WIDTH = $clog2(INSTR_MEM_SIZE);
+int unsigned INSTR_BYTES_SIZE     = INSTR_WIDTH / 8;
 
 endpackage
