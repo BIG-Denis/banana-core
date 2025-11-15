@@ -15,8 +15,9 @@ typedef struct packed {
   logic                              wb_rf_we;
   logic        [RF_ADDR_WIDTH - 1:0] wb_rf_addr;
   // TODO: all more fields
-  logic                              is_jump_instr;
   logic                              is_branch_instr;
+  logic                              is_jal_instr;
+  logic                              is_jalr_instr;
 } decoded_signals_t;
 
 typedef struct packed {
