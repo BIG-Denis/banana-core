@@ -27,7 +27,7 @@ assign pc_next = stall_i ? pc_ff :
                            is_branch_instr && alu_flag_i ? pc_ff + imm_b_i :
                                                            is_jal_instr ? pc_ff + imm_j_i :
                                                                           is_jalr_instr ? rf_rs1_data_i + imm_i_i :
-                           pc_ff + INSTR_MEM_ADDR_WIDTH'(INSTR_BYTES_SIZE);
+                                                                                          pc_ff + INSTR_MEM_ADDR_WIDTH'(INSTR_BYTES_SIZE);
 
 always_ff @( posedge clk_i or negedge arstn_i ) begin
   if ( ~arstn_i ) begin
