@@ -14,6 +14,9 @@ typedef struct packed {
   logic [DATA_WIDTH - 1:0] i_imm;
   logic [DATA_WIDTH - 1:0] u_imm;
   logic [DATA_WIDTH - 1:0] s_imm;
+
+  // PC value
+  logic [DATA_WIDTH - 1:0] pc;
 } comp_unit_data_t;
 
 endpackage
