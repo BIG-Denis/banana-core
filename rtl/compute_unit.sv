@@ -2,7 +2,7 @@ module compute_alu
 import banana_core_pkg::*;
 (
   // Control signals
-  input  dec_ctrls_t                        dec_ctrls,
+  input  dec_ctrls_t                     dec_ctrls,
 
   // RF ports
   input  logic [DATA_WIDTH - 1:0]        rs1_i,
