@@ -2,18 +2,23 @@ package banana_core_pkg;
 
 ////////////////////////////// GENERIC PARAMETERS /////////////////////////////
 
+// common
 int unsigned DATA_WIDTH  = 32;
-int unsigned INSTR_WIDTH = 32;
+int unsigned INSTR_WIDTH = 32;  // until no C extension
 int unsigned BYTE_WIDTH  = 8;
 
+// RF - register file
 int unsigned RF_REGS_COUNT = 32;
 int unsigned RF_ADDR_WIDTH = $clog2(RF_REGS_COUNT);
 
-int unsigned INSTR_MEM_SIZE       = 1024;  // count of INSTR_WIDTH bits instructions
-int unsigned INSTR_MEM_ADDR_WIDTH = $clog2(INSTR_MEM_SIZE);
-int unsigned INSTR_BYTES_SIZE     = INSTR_WIDTH / 8;
+// IM - instruction memory
+int unsigned IM_BYTES_SIZE = 2**14;  // size of IM in bytes, 14 -> 16 kB
+int unsigned IM_ADDR_WIDTH = $clog2(IM_BYTES_SIZE);
 
+// DM - data memory
+int unsigned DM_BYTES_SIZE = 2**14;  // size of DM in bytes, 14 -> 16 kB
 int unsigned DM_WORD_WIDTH = DATA_WIDTH;
+int unsigned DM_WORDS_SIZE = DM_BYTES_SIZE / DM_WORD_WIDTH;  // size of DM in words
 int unsigned DM_BE_WIDTH   = DM_WORD_WIDTH / BYTE_WIDTH;
 
 
