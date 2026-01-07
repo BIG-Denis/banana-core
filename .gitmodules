@@ -1,0 +1,3 @@
+[submodule "sviplib"]
+	path = sviplib
+	url = git@github.com:BIG-Denis/sviplib.git
