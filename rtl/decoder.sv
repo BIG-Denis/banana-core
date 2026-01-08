@@ -104,7 +104,7 @@ always_comb begin : decode_block
       3'b010: dec_o.alu_opcode = SLTS;    // slti
       3'b011: dec_o.alu_opcode = SLTU;    // sltiu
       3'b100: dec_o.alu_opcode = XOR;     // xori
-      3'b101: dec_o.alu_opcode =  begin  // sr_i
+      3'b101: begin                       // sr_i
 
         case( funct7 )
 
@@ -166,7 +166,7 @@ always_comb begin : decode_block
         dec_o.is_jalr_instr   = 1'b0;
 
         illegal_instr_o       = 1'b1;
-        
+
       end
       endcase
 
