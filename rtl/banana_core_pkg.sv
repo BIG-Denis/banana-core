@@ -26,7 +26,7 @@ int unsigned DM_BE_WIDTH   = DM_WORD_WIDTH / BYTE_WIDTH;
 
 // decoder
 
-typedef enum logic [1:0] { WORD, HALF, BYTE } dm_word_pt_t;
+typedef enum logic [2:0] { WORD, HALF, BYTE, HALF_U, BYTE_U } dm_word_pt_t;
 
 typedef struct packed {
   // alu
@@ -43,6 +43,7 @@ typedef struct packed {
   logic                       rf_rs2_v;
   // data mem
   logic                       dm_we;
+  logic                       dm_re;
   dm_word_pt_t                dm_word_pt;
   // pc ctrl
   logic                       is_branch_instr;
