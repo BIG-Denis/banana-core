@@ -11,7 +11,7 @@ import banana_core_pkg::*;
 
 logic [ALU_OPCODE_WIDTH - 1:0] opcode;
 logic [2:0]                    funct3;
-logic [6:0]                    funct7
+logic [6:0]                    funct7;
 
 logic [RF_ADDR_WIDTH - 1:0]    rd;
 logic [RF_ADDR_WIDTH - 1:0]    rs1; 
@@ -99,11 +99,11 @@ always_comb begin : decode_block
 
       case ( funct3 )
 
-      3'b000: dec_o.alu_opcode = ADD     // addi
-      3'b001: dec_o.alu_opcode = SLL     // slli
-      3'b010: dec_o.alu_opcode = SLTS    // slti
-      3'b011: dec_o.alu_opcode = SLTU    // sltiu
-      3'b100: dec_o.alu_opcode = XOR     // xori
+      3'b000: dec_o.alu_opcode = ADD;     // addi
+      3'b001: dec_o.alu_opcode = SLL;     // slli
+      3'b010: dec_o.alu_opcode = SLTS;    // slti
+      3'b011: dec_o.alu_opcode = SLTU;    // sltiu
+      3'b100: dec_o.alu_opcode = XOR;     // xori
       3'b101: dec_o.alu_opcode =  begin  // sr_i
 
         case( funct7 )
@@ -140,10 +140,10 @@ always_comb begin : decode_block
         
       end 
 
-      3'b110: dec_o.alu_opcode = OR     // ori
-      3'b111: dec_o.alu_opcode = AND    // andi
+      3'b110: dec_o.alu_opcode = OR;     // ori
+      3'b111: dec_o.alu_opcode = AND;    // andi
 
-      default:  // Illegal instruction - Wrong funct3
+      default: begin  // Illegal instruction - Wrong funct3
 
         dec_o.alu_opcode      = ALU_OPCODE_WIDTH'(x);
         dec_o.alu_op1_sel     = 'x;
@@ -166,7 +166,8 @@ always_comb begin : decode_block
         dec_o.is_jalr_instr   = 1'b0;
 
         illegal_instr_o       = 1'b1;
-
+        
+      end
       endcase
 
     5'b01100:  // R-type
@@ -573,7 +574,7 @@ always_comb begin : decode_block
       dec_o.is_jalr_instr   = 1'b0;
 
       illegal_instr_o       = 1'b1;
-      
+
     end 
     endcase
   end else begin  // Illegal instruction - No 11 at lsb
