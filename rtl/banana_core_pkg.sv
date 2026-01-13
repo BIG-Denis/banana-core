@@ -3,23 +3,24 @@ package banana_core_pkg;
 ////////////////////////////// GENERIC PARAMETERS /////////////////////////////
 
 // common
-int unsigned DATA_WIDTH  = 32;
-int unsigned INSTR_WIDTH = 32;  // until no C extension
-int unsigned BYTE_WIDTH  = 8;
+parameter DATA_WIDTH  = 32;
+parameter INSTR_WIDTH = 32;  // until no C extension
+parameter BYTE_WIDTH  = 8;
 
 // RF - register file
-int unsigned RF_REGS_COUNT = 32;
-int unsigned RF_ADDR_WIDTH = $clog2(RF_REGS_COUNT);
+parameter RF_REGS_COUNT = 32;
+parameter RF_ADDR_WIDTH = $clog2(RF_REGS_COUNT);
 
 // IM - instruction memory
-int unsigned IM_BYTES_SIZE = 2**14;  // size of IM in bytes, 14 -> 16 kB
-int unsigned IM_ADDR_WIDTH = $clog2(IM_BYTES_SIZE);
+parameter IM_BYTES_SIZE = 2**14;  // size of IM in bytes, 14 -> 16 kB
+parameter IM_ADDR_WIDTH = $clog2(IM_BYTES_SIZE);
 
 // DM - data memory
-int unsigned DM_BYTES_SIZE = 2**14;  // size of DM in bytes, 14 -> 16 kB
-int unsigned DM_WORD_WIDTH = DATA_WIDTH;
-int unsigned DM_WORDS_SIZE = DM_BYTES_SIZE / DM_WORD_WIDTH;  // size of DM in words
-int unsigned DM_BE_WIDTH   = DM_WORD_WIDTH / BYTE_WIDTH;
+parameter DM_BYTES_SIZE = 2**14;  // size of DM in bytes, 14 -> 16 kB
+parameter DM_ADDR_WIDTH = 14;
+parameter DM_WORD_WIDTH = DATA_WIDTH;
+parameter DM_WORDS_SIZE = DM_BYTES_SIZE / DM_WORD_WIDTH;  // size of DM in words
+parameter DM_BE_WIDTH   = DM_WORD_WIDTH / BYTE_WIDTH;
 
 
 //////////////////////////////// INTERNAL TYPES ///////////////////////////////
