@@ -7,9 +7,11 @@ import banana_core_pkg::*;
   output logic                   illegal_instr_o
 );
 
+localparam INSTR_OPCODE_WIDTH = 5;
+
 // Instruction fields
 
-logic [ALU_OPCODE_WIDTH - 1:0] compressed_opcode;
+logic [INSTR_OPCODE_WIDTH - 1:0] compressed_opcode;
 logic [2:0]                    funct3;
 logic [6:0]                    funct7;
 
@@ -32,7 +34,7 @@ always_comb begin : decode_block
   if ( instr_i[1:0] == 2'b11 ) begin
     case( compressed_opcode )
 
-    5'b01101: begin  // LUI
+    INSTR_OPCODE_WIDTH'('b01101): begin  // LUI
 
       dec_o.alu_opcode      = ADD;
       dec_o.alu_op1_sel     = U_IMM;
@@ -53,7 +55,7 @@ always_comb begin : decode_block
 
     end
 
-    5'b00101: begin  // AUIPC
+    INSTR_OPCODE_WIDTH'('b00101): begin  // AUIPC
 
       dec_o.alu_opcode      = ADD;
       dec_o.alu_op1_sel     = U_IMM;
@@ -74,7 +76,7 @@ always_comb begin : decode_block
 
     end
 
-    5'b00100: begin  // I-type
+    INSTR_OPCODE_WIDTH'('b00100): begin  // I-type
 
       dec_o.alu_op1_sel     = RS1;
       dec_o.alu_op2_sel     = I_IMM;
@@ -161,7 +163,7 @@ always_comb begin : decode_block
 
     end
 
-    5'b01100: begin // R-type
+    INSTR_OPCODE_WIDTH'('b01100): begin // R-type
 
       dec_o.alu_op1_sel     = RS1;
       dec_o.alu_op2_sel     = RS2;
@@ -275,7 +277,7 @@ always_comb begin : decode_block
       endcase
     end
 
-    5'b00011: begin  // fence executed as NOP
+    INSTR_OPCODE_WIDTH'('b00011): begin  // fence executed as NOP
 
       dec_o.alu_opcode      = ADD;
       dec_o.alu_op1_sel     = RS1;
@@ -296,7 +298,7 @@ always_comb begin : decode_block
 
     end
 
-    5'b11100: begin // ecall - Illegal instruction in current implementation
+    INSTR_OPCODE_WIDTH'('b11100): begin // ecall - Illegal instruction in current implementation
 
       dec_o.alu_opcode      = ADD;
       dec_o.alu_op1_sel     = RS1;
@@ -319,7 +321,7 @@ always_comb begin : decode_block
 
     end
 
-    5'b00000: begin // Load
+    INSTR_OPCODE_WIDTH'('b00000): begin // Load
 
       dec_o.alu_opcode      = ADD;
       dec_o.alu_op1_sel     = RS1;
@@ -370,7 +372,7 @@ always_comb begin : decode_block
       endcase
     end
 
-    5'b01000: begin  // S-type
+    INSTR_OPCODE_WIDTH'('b01000): begin  // S-type
 
       dec_o.alu_opcode      = ADD;
       dec_o.alu_op1_sel     = RS1;
@@ -419,7 +421,7 @@ always_comb begin : decode_block
       endcase
     end
 
-    5'b11011: begin  // J-type
+    INSTR_OPCODE_WIDTH'('b11011): begin  // J-type
 
       dec_o.alu_opcode      = ADD;
       dec_o.alu_op1_sel     = CONST4;
@@ -440,7 +442,7 @@ always_comb begin : decode_block
 
     end
 
-    5'b11001: begin  // jalr
+    INSTR_OPCODE_WIDTH'('b11001): begin  // jalr
 
       dec_o.alu_opcode      = ADD;
       dec_o.alu_op1_sel     = CONST4;
@@ -461,7 +463,7 @@ always_comb begin : decode_block
 
     end
 
-    5'b11000: begin  // B-type
+    INSTR_OPCODE_WIDTH'('b11000): begin  // B-type
 
       dec_o.alu_op1_sel     = RS1;
       dec_o.alu_op2_sel     = RS2;
