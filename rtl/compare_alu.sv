@@ -16,12 +16,13 @@ logic flag;
 
 always_comb begin : compare_block
   case ( dec_ctrls.alu_opcode )
-    LTS: flag = $signed( rs1_i ) < $signed( rs2_i );
-    LTU: flag = rs1_i < rs2_i;
-    GES: flag = $signed( rs1_i ) >= $signed( rs2_i );
-    GEU: flag = rs1_i >= rs2_i;
-    EQ:  flag = rs1_i == rs2_i;
-    NE:  flag = rs1_i != rs2_i;
+    LTS:     flag = $signed( rs1_i ) < $signed( rs2_i );
+    LTU:     flag = rs1_i < rs2_i;
+    GES:     flag = $signed( rs1_i ) >= $signed( rs2_i );
+    GEU:     flag = rs1_i >= rs2_i;
+    EQ:      flag = rs1_i == rs2_i;
+    NE:      flag = rs1_i != rs2_i;
+    default: flag = 'x;
   endcase
 end : compare_block
 

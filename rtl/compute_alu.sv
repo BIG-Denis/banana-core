@@ -48,16 +48,17 @@ end : operands_select
 
 always_comb begin : compute_block
   case ( dec_ctrls.alu_opcode )
-    ADD:  result = op1 +   op2;
-    SUB:  result = op1 -   op2;
-    XOR:  result = op1 ^   op2;
-    OR:   result = op1 |   op2;
-    AND:  result = op1 &   op2;
-    SRA:  result = op1 <<  op2;
-    SRL:  result = op1 <<< op2;
-    SLL:  result = op1 >>  op2;
-    SLTS: result = ( $signed( op1 ) < $signed( op2 ) ) ? DATA_WIDTH'( 1 ) : DATA_WIDTH'( 0 );
-    SLTU: result = ( op1 < op2 )                       ? DATA_WIDTH'( 1 ) : DATA_WIDTH'( 0 );
+    ADD:     result = op1 +   op2;
+    SUB:     result = op1 -   op2;
+    XOR:     result = op1 ^   op2;
+    OR:      result = op1 |   op2;
+    AND:     result = op1 &   op2;
+    SRA:     result = op1 <<  op2;
+    SRL:     result = op1 <<< op2;
+    SLL:     result = op1 >>  op2;
+    SLTS:    result = ( $signed( op1 ) < $signed( op2 ) ) ? DATA_WIDTH'( 1 ) : DATA_WIDTH'( 0 );
+    SLTU:    result = ( op1 < op2 )                       ? DATA_WIDTH'( 1 ) : DATA_WIDTH'( 0 );
+    default: result = 'x;
   endcase
 end : compute_block
 
