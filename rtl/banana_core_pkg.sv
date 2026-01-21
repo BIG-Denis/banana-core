@@ -3,26 +3,38 @@ package banana_core_pkg;
 ////////////////////////////// GENERIC PARAMETERS /////////////////////////////
 
 // common
-int unsigned DATA_WIDTH  = 32;
-int unsigned INSTR_WIDTH = 32;  // until no C extension
-int unsigned BYTE_WIDTH  = 8;
+parameter int unsigned DATA_WIDTH  = 32;
+parameter int unsigned INSTR_WIDTH = 32;  // until no C extension
+parameter int unsigned BYTE_WIDTH  = 8;
 
 // RF - register file
-int unsigned RF_REGS_COUNT = 32;
-int unsigned RF_ADDR_WIDTH = $clog2(RF_REGS_COUNT);
+parameter int unsigned RF_REGS_COUNT = 32;
+parameter int unsigned RF_ADDR_WIDTH = $clog2(RF_REGS_COUNT);
 
 // IM - instruction memory
-int unsigned IM_BYTES_SIZE = 2**14;  // size of IM in bytes, 14 -> 16 kB
-int unsigned IM_ADDR_WIDTH = $clog2(IM_BYTES_SIZE);
+parameter int unsigned IM_BYTES_SIZE = 2**14;  // size of IM in bytes, 14 -> 16 kB
+parameter int unsigned IM_ADDR_WIDTH = $clog2(IM_BYTES_SIZE);
 
 // DM - data memory
-int unsigned DM_BYTES_SIZE = 2**14;  // size of DM in bytes, 14 -> 16 kB
-int unsigned DM_WORD_WIDTH = DATA_WIDTH;
-int unsigned DM_WORDS_SIZE = DM_BYTES_SIZE / DM_WORD_WIDTH;  // size of DM in words
-int unsigned DM_BE_WIDTH   = DM_WORD_WIDTH / BYTE_WIDTH;
+parameter int unsigned DM_BYTES_SIZE = 2**14;  // size of DM in bytes, 14 -> 16 kB
+parameter int unsigned DM_WORD_WIDTH = DATA_WIDTH;
+parameter int unsigned DM_WORDS_SIZE = DM_BYTES_SIZE / DM_WORD_WIDTH;  // size of DM in words
+parameter int unsigned DM_BE_WIDTH   = DM_WORD_WIDTH / BYTE_WIDTH;
 
 
 //////////////////////////////// INTERNAL TYPES ///////////////////////////////
+
+// ALU
+
+typedef enum logic [ALU_OP1_SEL_WIDTH - 1:0] {RS1, CONST4, U_IMM} alu_op1_sel_t;
+typedef enum logic [ALU_OP2_SEL_WIDTH - 1:0] {RS2, PC, I_IMM, S_IMM, CONST0} alu_op2_sel_t;
+
+typedef enum logic [ALU_OPCODE_WIDTH - 1:0] {
+  ADD,  SUB,  XOR, OR,
+  AND,  SRA,  SRL, SLL,
+  SLTS, SLTU, LTS, LTU,
+  GES,  GEU,  EQ,  NE
+} alu_opcode_t;
 
 // decoder
 
