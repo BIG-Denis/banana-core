@@ -15,7 +15,7 @@ import banana_core_pkg::*;
 logic flag;
 
 always_comb begin : compare_block
-  case ( dec_ctrls.alu_opcode ) 
+  case ( dec_ctrls.alu_opcode )
     LTS: flag = $signed( rs1_i ) < $signed( rs2_i );
     LTU: flag = rs1_i < rs2_i;
     GES: flag = $signed( rs1_i ) >= $signed( rs2_i );
