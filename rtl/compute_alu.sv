@@ -27,11 +27,14 @@ logic [DATA_WIDTH - 1:0] op2;
 logic [DATA_WIDTH - 1:0] result;
 
 always_comb begin : operands_select
-  case ( dec_ctrls.op1_sel_i )
-    RS1:    op1 = rs1_i;
-    CONST4: op1 = DATA_WIDTH'( 4 );
+  case ( dec_ctrls.alu_op1_sel )
+    RS1:     op1 = rs1_i;
+    CONST4:  op1 = DATA_WIDTH'( 4 );
+    U_IMM:   op1 = u_imm_i;
+    default: op1 = 'x;
   endcase
-  case ( dec_ctrls.op2_sel_i )
+
+  case ( dec_ctrls.alu_op2_sel )
     RS2:     op2 = rs2_i;
     PC:      op2 = pc_i;
     I_IMM:   op2 = i_imm_i;
@@ -40,6 +43,7 @@ always_comb begin : operands_select
     CONST0:  op2 = DATA_WIDTH'( 0 );
     default: op2 = 'x;
   endcase
+
 end : operands_select
 
 always_comb begin : compute_block
