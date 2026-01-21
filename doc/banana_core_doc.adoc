@@ -4,6 +4,12 @@
 :toclevels: 3
 :sectnums:
 
+== Abbreviations
+
+* BC - banana core
+* PC - program counter
+* RF - register file
+
 == Overview
 
 TBD
@@ -22,29 +28,28 @@ TBD
 
 === Top level
 
-TBD
+This diagram presents top-level microarchitecture of banana core which includes 4 pipeline stages:
 
+* BC0: Fetch - next instruction being fetched from instruction memory.
+* BC1: Decode - fetched instruction decodes into control signals for further stages, needed data being fetch from RF and instruction constants are generated.
+* BC2: Execute - all calculations and accesses to data memory are performed.
+* BC3: WriteBack - writeback operation to RF are arbitered and performed, next value of PC are calculated and clocked into the register.
+
+.Top level microarchitecture diagram
 image::img/bc_uarch_top_level.png[Top Level Microarchitecture]
+
+[NOTE]
+Despite pipeline registers are depictured after instruction memory and data memory, they are not presented this way as this memories have synchronous read ports.
 
 === Compute Unit
 
 TBD
 
-// include::compite_unit.adoc[leveloffset=+1]
-
 === TBD more units
 
 TBD
 
-== Intefaces
-
-TBD
-
-=== Internal interfaces
-
-TBD
-
-=== External interfaces
+== External interfaces
 
 TBD
 
