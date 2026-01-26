@@ -31,9 +31,9 @@ typedef enum logic [2:0] { WORD, HALF, BYTE, HALF_U, BYTE_U } dm_word_pt_t;
 
 typedef struct packed {
   // alu
-  alu_opcode_t                alu_opcode;
-  alu_op1_sel_t               alu_op1_sel;
-  alu_op2_sel_t               alu_op2_sel;
+  // alu_opcode_t                alu_opcode;
+  // alu_op1_sel_t               alu_op1_sel;
+  // alu_op2_sel_t               alu_op2_sel;
   // rf writeback
   logic                       rf_wb_we;
   logic [RF_ADDR_WIDTH - 1:0] rf_wb_addr;
